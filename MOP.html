@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: white;
+      text-align: center;
+    }	
+    header {
+      background-color: #1d428a;
+      padding: 20px;
+    }
+    .link {
+      text-decoration: none;
+      margin: 0 100px;
+      color: white;
+      cursor: pointer;
+      border-radius: 5px;
+      padding: 5px;
+    }
+    .link:hover {
+      background-color: #294e9e;
+    }
+    h1 {
+      color: #1d428a;
+    }
+
+    .group {
+      margin-top: 100px;
+      width: 1000px;
+      height: 500px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <a class = "link" href = "index.html">Home Page</a>
+    <a class = "link" href = "WVL.html">Win vs Losses</a>
+    <a class = "link" href = "MOP.html">Monthly On-Base Percentage</a>
+    <a class = "link" href = "TOP5.html">Top 5 Homerun Hitters</a>
+  </header>
+
+  <div class = "group">
+    <canvas id = "graph" width = "200" height = "100"></canvas>
+  </div>
+
+  <script src = "https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <script>
+    var canvas = document.getElementById ("graph").getContext ("2d");
+
+    var graph = new Chart (canvas, {
+      type: "line",
+
+      data: {
+        labels: ["March","April","May","June","July","August","September","October"],
+        datasets: [{
+          data:[0.694,0.327,0.331,0.318,0.341,0.319,0.327,0.378],
+          backgroundColor:["#1d428a","#1d428a","#1d428a","#1d428a","#1d428a", "#1d428a", "#1d428a", "#1d428a"]
+        }]
+      },
+
+      options: {
+        responsive: true, 
+
+        scales: {
+          y: {
+            beginAtZero:true,
+            title: {
+              display: true,
+              text: "On Base Percentage"
+            }
+          },
+          x: {
+            title: {
+              display: true,
+              text: "Months"
+            }
+          }
+        },
+
+        plugins: {
+          title: {
+            display: true,
+            text: "Monthly On-Base Percentage"
+          },
+          legend: {
+            display: false
+          }
+        }
+      }
+    });
+  </script>
+</body>
+</html>
